@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.wn.myapplication.view.LinearGradientTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/span_text"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical|start"
+    android:ellipsize="end"
+    android:gravity="center_vertical|start"
+    android:singleLine="true"
+    android:textAlignment="viewStart"
+    android:textColor="@android:color/black"
+    android:textDirection="locale"
+    android:textSize="11sp"
+    app:showTime="100" />
