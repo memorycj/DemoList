@@ -4,14 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/darker_gray"
     tools:context=".MainActivity">
 
-    <TextView
+    <com.wn.myapplication.view.LinearGradientTextView
         android:id="@+id/span_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@android:color/holo_red_light"
         android:textSize="15sp" />
 
+    <com.wn.myapplication.view.comment.ChatCommentTextView
+        android:id="@+id/chat_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:textSize="12sp"
+        android:textColor="@color/white"
+        />
 
 </FrameLayout>

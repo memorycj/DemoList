@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="gift_text">"[nick_name] send a [gift_icon] to [nick_name]"</string>
 </resources>

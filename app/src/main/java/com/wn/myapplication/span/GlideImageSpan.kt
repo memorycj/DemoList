@@ -107,7 +107,7 @@ class GlideImageSpan(val view: TextView, val url: Any) : ReplacementSpan() {
     /** GIF动画触发刷新文字的回调 */
     private val drawableCallback = object : Drawable.Callback {
         override fun invalidateDrawable(who: Drawable) {
-            view.invalidate()
+            view?.invalidate()
         }
 
         override fun scheduleDrawable(

@@ -28,16 +28,36 @@ open class ViewSpan(protected var view: View) : ReplacementSpan() {
         end: Int,
         fm: Paint.FontMetricsInt?
     ): Int {
-        val widthSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
-        val heightSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
+        val vW = view.layoutParams?.width?:0
+        val vH = view.layoutParams?.height?:0
+        val widthSpec = View.MeasureSpec.makeMeasureSpec(
+            if (vW > 0) {
+                vW
+            } else {
+                0
+            }, if (vW > 0) {
+                View.MeasureSpec.EXACTLY
+            } else {
+                View.MeasureSpec.UNSPECIFIED
+            }
+        )
+        val heightSpec = View.MeasureSpec.makeMeasureSpec( if (vH > 0) {
+            vH
+        } else {
+            0
+        }, if (vW > 0) {
+            View.MeasureSpec.EXACTLY
+        } else {
+            View.MeasureSpec.UNSPECIFIED
+        })
         view.measure(widthSpec, heightSpec)
         view.layout(0, 0, view.measuredWidth, view.measuredHeight)
         fm?.apply {
-            val vH = view.measuredHeight
-            ascent = -vH / 2
-            top = -vH / 2
-            descent = vH / 2
-            bottom = vH / 2
+            val vRealH = view.measuredHeight
+            ascent = -vRealH / 2
+            top = -vRealH / 2
+            descent = (vRealH * 0.4f).toInt()
+            bottom = vRealH / 2
         }
         return view.right
     }

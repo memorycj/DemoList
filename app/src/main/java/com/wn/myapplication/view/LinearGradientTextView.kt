@@ -136,7 +136,7 @@ class LinearGradientTextView : AppCompatTextView {
             }
             gradientMatrix?.setTranslate(translateX, 0f)
             linearGradient?.setLocalMatrix(gradientMatrix)
-            parentTextView?.postInvalidateDelayed((showTime * lineNumber).toLong())
+            postInvalidateDelayed((showTime * lineNumber).toLong())
         }
     }
 
