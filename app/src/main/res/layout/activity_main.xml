@@ -7,20 +7,22 @@
     android:background="@android:color/darker_gray"
     tools:context=".MainActivity">
 
-    <com.wn.myapplication.view.LinearGradientTextView
-        android:id="@+id/span_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/holo_red_light"
-        android:textSize="15sp" />
+
 
     <com.wn.myapplication.view.comment.ChatCommentTextView
         android:id="@+id/chat_comment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:textSize="12sp"
         android:textColor="@color/white"
+        />
+
+    <com.wn.myapplication.view.LinearGradientTextView
+        android:id="@+id/span_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="12sp"
         />
 
 </FrameLayout>

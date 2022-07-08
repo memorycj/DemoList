@@ -5,9 +5,12 @@ import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import com.wn.myapplication.databinding.ActivityMainBinding
 import com.wn.myapplication.span.TextSpan
+import com.wn.myapplication.util.DensityUtils
+import com.wn.myapplication.util.dp
 import com.wn.myapplication.view.comment.BaseChatElement
 import com.wn.myapplication.view.comment.IconChatElement
 import com.wn.myapplication.view.comment.UserLevelChatElement
@@ -26,18 +29,27 @@ class MainActivity : AppCompatActivity() {
 //        spanStr.setSpan(TextSpan(binding.chatComment,measureText),spanStr.indexOf(test),test.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
 //        binding.chatComment.text = spanStr
 //
-//        binding.spanText.baseColor = Color.BLUE
-//        binding.spanText.lightColor = Color.YELLOW
-//        binding.spanText.text = "你好啊啊啊啊,你好啊啊啊啊你好啊啊啊啊你好啊啊啊啊你好啊啊啊啊你好啊啊啊啊你好啊啊啊啊你好啊啊啊啊"
-//        binding.spanText.hasColorAnimation = true
+
+
 
         val list = mutableListOf<BaseChatElement>()
-        list.add(IconChatElement("https://img0.baidu.com/it/u=512340543,3139277133&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=281").apply {
-           weight = -1
-        })
-        list.add(IconChatElement("https://img0.baidu.com/it/u=512340543,3139277133&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=281").apply {
-            weight = -1
-        })
+//        list.add(IconChatElement("https://img0.baidu.com/it/u=512340543,3139277133&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=281").apply {
+//           weight = -1
+//        })
+//        list.add(IconChatElement("https://img0.baidu.com/it/u=512340543,3139277133&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=281").apply {
+//            weight = -1
+//        })
+//        list.add(IconChatElement("https://img0.baidu.com/it/u=512340543,3139277133&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=281").apply {
+//            weight = -1
+//        })
+//        list.add(IconChatElement("https://img0.baidu.com/it/u=512340543,3139277133&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=281").apply {
+//            weight = -1
+//        })
+//        list.add(IconChatElement("https://img0.baidu.com/it/u=512340543,3139277133&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=281").apply {
+//            weight = -1
+//        })
+
+
 //        list.add(IconChatElement("https://img0.baidu.com/it/u=512340543,3139277133&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=281").apply {
 //            weight = -1
 //        })
@@ -47,19 +59,29 @@ class MainActivity : AppCompatActivity() {
 
 
         val suffixList = mutableListOf<BaseChatElement>()
-        suffixList.add(IconChatElement("https://img0.baidu.com/it/u=512340543,3139277133&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=281").apply {
-            weight = -1
-        })
-        suffixList.add(UserLevelChatElement("https://i.bmp.ovh/imgs/2022/06/21/e9202faee9e66918.png"))
-        suffixList.add(UserLevelChatElement("https://i.bmp.ovh/imgs/2022/06/21/e9202faee9e66918.png").apply {
-            weight = 2
-        })
+//        suffixList.add(IconChatElement("https://img0.baidu.com/it/u=512340543,3139277133&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=281").apply {
+//            weight = -1
+//        })
+//        suffixList.add(UserLevelChatElement("https://i.bmp.ovh/imgs/2022/06/21/e9202faee9e66918.png"))
+//        suffixList.add(UserLevelChatElement("https://i.bmp.ovh/imgs/2022/06/21/e9202faee9e66918.png").apply {
+//            weight = 2
+//        })
+        val nickName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
         binding.chatComment.nickNameColor = R.color.C_9AE0FF
         binding.chatComment.apply {
             nickNameColor = R.color.C_9AE0FF
             setPrefixElement(list)
             setSuffixElement(suffixList)
-        }.render("nikeNamebbbbbb","shi is he,sslklkl klklkl klk lklkl shi is he,sslklkl klklkl klk lklkl lklkshi is he,sslklkl klklkl klk lklkl lklkshi is he,sslklkl klklkl klk lklkl lklkshi is he,sslklkl klklkl klk lklkl lklkshi is he,sslklkl klklkl klk lklkl lklkshi is he,sslklkl klklkl klk lklkl lklkshi is he,sslklkl klklkl klhi ")
+        }.render(nickName,"shi is he,sslklkl klklkl klk lklkl shi is he,sslklkl klklkl klk lklkl lklkshi is he,sslklkl klklkl klk lklkl lklkshi is he,sslklkl klklkl klk lklkl lklkshi is he,sslklkl klklkl klk lklkl lklkshi is he,sslklkl klklkl klk lklkl lklkshi is he,sslklkl klklkl klk lklkl lklkshi is he,sslklkl klklkl klhi ")
+        binding.chatComment.postDelayed({
+            (binding.spanText.layoutParams as? ViewGroup.MarginLayoutParams)?.apply {
+                marginStart = 112.dp
+            }
+            binding.spanText.text = nickName
+            binding.spanText.baseColor = Color.BLUE
+            binding.spanText.lightColor = Color.YELLOW
+            binding.spanText.hasColorAnimation = true
+        },500)
 //        val spanTextView = binding.chatComment
 //        val tag = "tag_tag"
 //        val linearGradinet = "l_grad"

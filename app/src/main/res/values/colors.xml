@@ -8,4 +8,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="C_9AE0FF">#9AE0FF</color>
+    <color name="tran">#00000000</color>
 </resources>

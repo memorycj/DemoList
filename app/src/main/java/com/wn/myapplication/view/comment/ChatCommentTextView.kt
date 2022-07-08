@@ -1,14 +1,18 @@
 package com.wn.myapplication.view.comment
 
 import android.content.Context
+import android.graphics.Color
 import android.text.Spannable
 import android.text.SpannableStringBuilder
+import android.text.Spanned
 import android.text.TextPaint
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.widget.AppCompatTextView
 import com.wn.myapplication.R
+import com.wn.myapplication.span.LinearGradientSpan
 import com.wn.myapplication.span.LongClickableSpan
 import com.wn.myapplication.span.TextSpan
 import com.wn.myapplication.span.ViewSpan
@@ -16,6 +20,7 @@ import com.wn.myapplication.util.KtvNameLongClickLinkMovementMethod
 import com.wn.myapplication.util.StringUtils
 import com.wn.myapplication.util.dp
 import com.wn.myapplication.util.toast
+import com.wn.myapplication.view.LinearGradientTextView
 import java.util.*
 import java.util.regex.Pattern
 
@@ -83,7 +88,7 @@ class ChatCommentTextView @JvmOverloads constructor(
             }
         }
         spanStr.append(msgContent)
-        assembleElement(tagSets,spanStr)
+        StringUtils.setTextColor(spanStr,nickName,R.color.tran)
         StringUtils.setClickSpan(spanStr, nickName ,object : LongClickableSpan() {
             override fun onClick(widget: View) {
                 toast("nick click")
@@ -99,8 +104,38 @@ class ChatCommentTextView @JvmOverloads constructor(
 
         })
         StringUtils.setTextSize(spanStr,nickName,nickNameSize)
-        spanStr.setSpan(TextSpan(this,paint.measureText(nickName)),spanStr.indexOf(nickName),spanStr.indexOf(nickName) + nickName.length,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         text = spanStr
+//        val holdSpan = Any()
+//        spanStr.setSpan(holdSpan,spanStr.indexOf(nickName),spanStr.indexOf(nickName) + nickName.length,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+//        postDelayed({
+//            (text as? Spanned)?.let {
+//                val spanStart = it.getSpanStart(holdSpan)
+//                val spanEnd = it.getSpanEnd(holdSpan)
+//                val startLine = layout.getLineForOffset(spanStart)
+//                val endLine = layout.getLineForOffset(spanEnd)
+//                var offsetLength = spanStr.indexOf(nickName)
+//                var remainingLength = nickName.length //剩余昵称长度
+//                for (line in startLine..endLine){
+//                    val lineEndNumber = layout.getLineEnd(line)
+//                    Log.d("wangnneg","line:$line,lineEndNumber: $lineEndNumber")
+//                    val end = if(remainingLength > 0 && offsetLength + remainingLength< lineEndNumber){
+//                        offsetLength + remainingLength
+//                    } else {
+//                        lineEndNumber
+//                    }
+//                    val lineText = spanStr.substring(offsetLength,end)
+//                    remainingLength -= lineText.length
+//                    Log.d("wangnneg", "startLine:$lineEndNumber-------$lineText")
+//                    spanStr.setSpan(TextSpan(this,paint.measureText(lineText),lineText,if(line == 0){
+//                        114.dp
+//                    } else {
+//                        0
+//                    }),offsetLength,end,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+//                    offsetLength = end
+//                }
+//                text = spanStr
+//            }
+//        },500)
     }
 
     private fun assembleElement(elements: Queue<BaseChatElement>,spanStr: SpannableStringBuilder) {

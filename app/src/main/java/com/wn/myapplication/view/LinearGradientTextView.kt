@@ -4,8 +4,10 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.*
 import android.os.Build
+import android.text.Spanned
 import android.text.TextPaint
 import android.util.AttributeSet
+import android.util.Log
 import android.widget.TextView
 import androidx.annotation.ColorInt
 import androidx.appcompat.widget.AppCompatTextView
@@ -92,7 +94,7 @@ class LinearGradientTextView : AppCompatTextView {
             gradientPaint?.shader = linearGradient
             gradientMatrix = Matrix()
             translateX = 0f
-            parentTextView?.postInvalidate()
+            postInvalidate()
 //            LogUtil.d("LinearGradientTextView", "text:$text hasColorAnimation:$hasColorAnimation")
         } else {
             val text = text.toString()
@@ -108,7 +110,7 @@ class LinearGradientTextView : AppCompatTextView {
             gradientPaint?.shader = null
             gradientMatrix = Matrix()
             linearGradient?.setLocalMatrix(gradientMatrix)
-            parentTextView?.postInvalidate()
+            postInvalidate()
         }
     }
 
